@@ -14,8 +14,7 @@ excuse_list = ["My dog died","I'm dead","I ate too much",
                 "If I don't do laundry I will literally have to leave the house naked tomorrow",
                 "I'm building a fort"]
 
-def excuse():
-    pass
+app_id = "amzn1.ask.skill.xxx-xxx"
 
 def lambda_handler(request_obj, context=None):
     '''
@@ -33,7 +32,13 @@ def lambda_handler(request_obj, context=None):
 
     Then in the handler function you can do something like -
     ... return alexa.create_response('Hello there {}!'.format(request.metadata['user_name']))
+
     '''
+
+    if (request_obj['session']['application']['applicationId'] !=
+        app_id):
+        raise ValueError("Invalid Application ID")
+
     return alexa.route_request(request_obj, metadata)
 
 
@@ -57,7 +62,7 @@ def session_ended_request_handler(request):
 def no_intent_handler(request):
     return alexa.create_response(message="Okay, goodbye.", end_session=True)
 
-    
+
 @alexa.intent_handler('GetExcuseIntent')
 def get_excuse_intent_handler(request):
     """
@@ -82,7 +87,8 @@ def help_intent_handler(request):
     card = alexa.create_card(title="Here's some help",
             content="Simply say one of the following:\nAlexa, ask ExcuseMe! for and excuse.\nAlexa, ask ExcuseMe! to find an excuse for me.")
 
-    return alexa.create_response(message="Simply ask for an excuse by saying, Alexa, ask Excuse Me for and excuse. Or check the Alexa app for more options", end_session=True, card_obj=card)
+    return alexa.create_response(message="Simply ask for an excuse by saying, Alexa, ask Excuse Me for and excuse. Or check the Alexa app for more options",
+            end_session=True, card_obj=card)
 # @alexa.intent_handler('NextRecipeIntent')
 # def next_recipe_intent_handler(request):
 #     """
