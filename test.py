@@ -12,9 +12,8 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--input_json', required=True)
     args = parser.parse_args()
     request_obj = json.load(open(args.input_json))
-    print ('Request JSON')
-    print (json.dumps(request_obj, indent=2))
+    #print ('Request JSON')
+    #print (json.dumps(request_obj, indent=2))
     response = lambda_handler(request_obj)
     print ('Response JSON')
     print (json.dumps(response, indent=2))
-    

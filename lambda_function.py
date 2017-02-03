@@ -1,10 +1,18 @@
 """
-In this file we specify default event handlers which are then populated into the handler map using metaprogramming
 Copyright Anjishnu Kumar 2015
-Happy Hacking!
 """
 
 from ask import alexa
+import random
+
+excuse_list = ["My dog died","I'm dead","I ate too much",
+                "I have some scheduled snuggle time",
+                "Uggh, work was so draining","I have to practice yoga",
+                "There is too much TV to watch",
+                "I have a hot date with a piece of pizza",
+                "Um, internet? Maybe youve heard of it?",
+                "If I don't do laundry I will literally have to leave the house naked tomorrow",
+                "I'm building a fort"]
 
 def lambda_handler(request_obj, context=None):
     '''
@@ -15,9 +23,9 @@ def lambda_handler(request_obj, context=None):
     '''
 
     metadata = {'user_name' : 'SomeRandomDude'} # add your own metadata to the request using key value pairs
-    
-    ''' inject user relevant metadata into the request if you want to, here.    
-    e.g. Something like : 
+
+    ''' inject user relevant metadata into the request if you want to, here.
+    e.g. Something like :
     ... metadata = {'user_name' : some_database.query_user_name(request.get_user_id())}
 
     Then in the handler function you can do something like -
@@ -34,38 +42,36 @@ def default_handler(request):
 
 @alexa.request_handler("LaunchRequest")
 def launch_request_handler(request):
-    return alexa.create_response(message="Hello Welcome to My Recipes!")
+    return alexa.create_response(message="Hello Welcome to Excuse Me!")
 
 
 @alexa.request_handler("SessionEndedRequest")
 def session_ended_request_handler(request):
-    return alexa.create_response(message="Goodbye!")
+    return alexa.create_response(message="Thank you and good luck!")
 
 
-@alexa.intent_handler('GetRecipeIntent')
-def get_recipe_intent_handler(request):
-    """
-    You can insert arbitrary business logic code here    
-    """
-
-    # Get variables like userId, slots, intent name etc from the 'Request' object
-    ingredient = request.slots["Ingredient"] 
-
-    if ingredient == None:
-        return alexa.create_response("Could not find an ingredient!")
-
-    card = alexa.create_card(title="GetRecipeIntent activated", subtitle=None,
-                             content="asked alexa to find a recipe using {}".format(ingredient))
-    
-    return alexa.create_response("Finding a recipe with the ingredient {}".format(ingredient),
-                                 end_session=False, card_obj=card)
-
-
-
-@alexa.intent_handler('NextRecipeIntent')
-def next_recipe_intent_handler(request):
+@alexa.intent_handler('GetExcuseIntent')
+def get_excuse_intent_handler(request):
     """
     You can insert arbitrary business logic code here
     """
-    return alexa.create_response(message="Getting Next Recipe ... 123")
 
+    excuse = random.choice(excuse_list)
+
+    card = alexa.create_card(title="ExcuseMe", subtitle=None,
+                content="I came up with the excuse: {}".format(excuse))
+
+    return alexa.create_response("A great excuse would be... {}".format(excuse),
+                end_session=True, card_obj=card)
+    # # Get variables like userId, slots, intent name etc from the 'Request' object
+    # ingredient = request.slots["Ingredient"]
+    #
+    # if ingredient == None:
+    #     return alexa.create_response("Could not find an ingredient!")
+
+# @alexa.intent_handler('NextRecipeIntent')
+# def next_recipe_intent_handler(request):
+#     """
+#     You can insert arbitrary business logic code here
+#     """
+#     return alexa.create_response(message="Getting Next Recipe ... 123")

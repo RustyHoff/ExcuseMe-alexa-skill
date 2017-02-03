@@ -1,0 +1,8 @@
+GetExcuseIntent	give me an excuse
+GetExcuseIntent	give me a good excuse
+GetExcuseIntent	i need an excuse
+GetExcuseIntent	what is an excuse
+GetExcuseIntent	what is a good excuse
+GetExcuseIntent	an excuse
+GetExcuseIntent	tell me something
+GetExcuseIntent	give me something
