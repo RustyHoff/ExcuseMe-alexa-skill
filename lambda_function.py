@@ -14,6 +14,9 @@ excuse_list = ["My dog died","I'm dead","I ate too much",
                 "If I don't do laundry I will literally have to leave the house naked tomorrow",
                 "I'm building a fort"]
 
+def excuse():
+    pass
+
 def lambda_handler(request_obj, context=None):
     '''
     This is the main function to enter to enter into this code.
@@ -37,29 +40,33 @@ def lambda_handler(request_obj, context=None):
 @alexa.default_handler()
 def default_handler(request):
     """ The default handler gets invoked if no handler is set for a request """
-    return alexa.create_response(message="Just ask")
+    return alexa.create_response(message="Goodbye!",end_session=True)
 
 
 @alexa.request_handler("LaunchRequest")
 def launch_request_handler(request):
-    return alexa.create_response(message="Hello Welcome to Excuse Me!")
+    return alexa.create_response(message="Hello and welcome to Excuse Me! Ask me for an excuse.")
 
 
 @alexa.request_handler("SessionEndedRequest")
 def session_ended_request_handler(request):
-    return alexa.create_response(message="Thank you and good luck!")
+    return alexa.create_response(message="Thank you and good luck!",
+            end_session=True)
 
+@alexa.intent_handler("AMAZON.NoIntent")
+def no_intent_handler(request):
+    return alexa.create_response(message="Okay, goodbye.", end_session=True)
 
+    
 @alexa.intent_handler('GetExcuseIntent')
 def get_excuse_intent_handler(request):
     """
     You can insert arbitrary business logic code here
     """
-
     excuse = random.choice(excuse_list)
 
     card = alexa.create_card(title="ExcuseMe", subtitle=None,
-                content="I came up with the excuse: {}".format(excuse))
+                content="I came up with the excuse: {}.".format(excuse))
 
     return alexa.create_response("A great excuse would be... {}".format(excuse),
                 end_session=True, card_obj=card)
@@ -69,6 +76,13 @@ def get_excuse_intent_handler(request):
     # if ingredient == None:
     #     return alexa.create_response("Could not find an ingredient!")
 
+@alexa.intent_handler("AMAZON.HelpIntent")
+def help_intent_handler(request):
+
+    card = alexa.create_card(title="Here's some help",
+            content="Simply say one of the following:\nAlexa, ask ExcuseMe! for and excuse.\nAlexa, ask ExcuseMe! to find an excuse for me.")
+
+    return alexa.create_response(message="Simply ask for an excuse by saying, Alexa, ask Excuse Me for and excuse. Or check the Alexa app for more options", end_session=True, card_obj=card)
 # @alexa.intent_handler('NextRecipeIntent')
 # def next_recipe_intent_handler(request):
 #     """

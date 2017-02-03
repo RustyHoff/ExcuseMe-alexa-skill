@@ -5,10 +5,6 @@
             "slots": []
         },
         {
-            "intent": "AMAZON.YesIntent",
-            "slots": []
-        },
-        {
             "intent": "AMAZON.NoIntent",
             "slots": []
         },

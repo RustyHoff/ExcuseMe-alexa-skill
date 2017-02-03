@@ -1,8 +1,15 @@
 GetExcuseIntent	give me an excuse
 GetExcuseIntent	give me a good excuse
-GetExcuseIntent	i need an excuse
+GetExcuseIntent	give me something
 GetExcuseIntent	what is an excuse
 GetExcuseIntent	what is a good excuse
-GetExcuseIntent	an excuse
+GetExcuseIntent what's an excuse
+GetExcuseIntent what's a good excuse
 GetExcuseIntent	tell me something
-GetExcuseIntent	give me something
+GetExcuseIntent tell me an excuse
+GetExcuseIntent find me an excuse
+GetExcuseIntent find me an excuse to use
+GetExcuseIntent find an excuse for me
+GetExcuseIntent find an excuse
+GetExcuseIntent	an excuse
+GetExcuseIntent	i need an excuse
