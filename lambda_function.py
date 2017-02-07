@@ -87,8 +87,8 @@ def help_intent_handler(request):
     card = alexa.create_card(title="Here's some help",
             content="Simply say one of the following:\nAlexa, ask ExcuseMe! for and excuse.\nAlexa, ask ExcuseMe! to find an excuse for me.")
 
-    return alexa.create_response(message="Simply ask for an excuse by saying, Alexa, ask Excuse Me for and excuse. Or check the Alexa app for more options",
-            end_session=True, card_obj=card)
+    return alexa.create_response(message="Simply ask for an excuse by saying, Alexa, ask Excuse Me for and excuse. Or check the Alexa app for more options. What would you like to do?",
+            end_session=False, card_obj=card)
 # @alexa.intent_handler('NextRecipeIntent')
 # def next_recipe_intent_handler(request):
 #     """
