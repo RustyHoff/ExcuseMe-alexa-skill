@@ -5,14 +5,14 @@ Copyright Anjishnu Kumar 2015
 from ask import alexa
 import random
 
-excuse_list = ["My dog died","I'm dead","I ate too much",
-                "I have some scheduled snuggle time",
-                "Uggh, work was so draining","I have to practice yoga",
-                "There is too much TV to watch",
-                "I have a hot date with a piece of pizza",
-                "Um, internet? Maybe youve heard of it?",
-                "If I don't do laundry I will literally have to leave the house naked tomorrow",
-                "I'm building a fort"]
+excuse_list = [
+    "My dog died","I'm dead","I ate too much","I have some scheduled snuggle time","Uggh, work was so draining","I have to practice yoga","There is too much TV to watch","I have a hot date with a piece of pizza","Um, internet? Maybe youve heard of it?","If I don't do laundry I will literally have to leave the house naked tomorrow","I'm building a fort",
+    "I'm test driving my duvet","I'm tuning my air guitar","The floor is actually lava","I'm giving my goldfish a bath","The dog literally ate all my shoes","My teeth are really itchy","Those boxsets won't watch themselves","There are birds outside giving me evils","I'm allergic to rain","A magpie stole my keys","Yesterday was leg day","I'm on 5%",
+    "I've already been outside once today","I pulled a muscle at the last party","I'm teaching my cat to breakdance","Netflix isn't going to watch itself","But that means I have to put pants on","Its my cat's birthday","My sofa has swallowed my body","I'm watching for continuity errors in the Star Wars trilogy","I'm lost in a quagmire of existential angst",
+    "I'm in the middle of a really invigorating Tinder convo, and I honestly think they could be the one","I'm stuck in my dog flap","My bed doesn't like to be left alone","I'm sharpening my pencils","I'm sewing my name into all of my clothes","I'm a Belieber","The cat fell asleep on my lap","It's a full moon and I'm genuinely worried I might be a werewolf",
+    "Winter was coming but now it's here","My goldfish has a cold","The last time I left the house, I lost my dignity","I'm waiting for my candle to burn out","I just stepped on a Lego brick","I can't find my bra","I get homesick really fast","The gravity around my bed is too strong","I dropped my favorite needle in a haystack",
+    "I missed Bake Off and I don't want anyone to ruin it","My fortune teller advised against it","I've crimped my hair","My sofa is dying and I'm keeping it warm in its final hours","I'm wearing in my new pajamas","I'm teaching iguanas parkour...","Just too lazy to get out of bed","I'm teaching my fridge how to be cool",
+    "My mom's brother's wife's cousin's gerbil swallowed a quarter","My pillow suffers from anxiety & can't bear to be without me"]
 
 app_id = "amzn1.ask.skill.xxx-xxx"
 
